@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Bootstrap Example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+
+		<div class="jumbotron text-center">
+			<h1>Mon premier formulaire</h1>
+			<h4>la liste de mes clients</h4>
+			<a href="/client/new">Nouveau</a>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				{% if clients is not empty %}
+					<table>
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Prenom</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Delete</th>
+								<th>Update</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for client in clients %}
+								<tr>
+									<td>{{ client.name }}</td>
+									<td>{{ client.fullname }}</td>
+									<td>{{ client.email}}</td>
+									<td>{{ client.phone }}</td>
+									<td>
+										<a href="/client/delete/{{ client.id }}">Delete</a>
+									</td>
+									<td>
+										<a href="/client/edit/{{ client.id }}">Update</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				{% else %}
+					<p>No client found.</p>
+				{% endif %}
+			</div>
+		</div>
+
+	</body>
+</html>

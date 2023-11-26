@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des produits
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1>Ajouter un produit</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nom</th>
+							<th scope="col">Description</th>
+							<th scope="col">Quantite</th>
+							<th scope="col">Prix</th>
+							<th scope="col">Categorie</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in products %}
+							<tr>
+								<th scope="row">{{item.id}}</th>
+								<td>{{item.name}}</td>
+								<td>{{item.description | slice(0, 20) }}...</td>
+								<td>{{item.quantity}}</td>
+								<td>{{item.price}}</td>
+								<td>{{item.categories}}</td>
+								<td>
+									<a href="edit/{{item.id}}">
+										<button class="btn edit-btn" data-id="{{item.id}}">
+											<i class="fa-solid fa-pen-to-square fs-7"></i>
+										</button>
+									</a>
+									<a href="delete/{{item.id}}">
+										<button class="btn delete-btn" data-id="{{item.id}}">
+											<i class="fa-solid fa fa-trash fs-7"></i>
+										</button>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+
+{% endblock %}

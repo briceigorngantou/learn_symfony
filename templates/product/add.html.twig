@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des produits
+{% endblock %}
+
+{% block body %}
+	{% if edit %}
+		<main class="container">
+			<section class="row">
+				<div class="col-12">
+					<h1>Modifier un produit</h1>
+					{% include "product/_form.html.twig" %}
+				</div>
+			</section>
+		</main>
+	{% else %}
+		<main class="container">
+			<section class="row">
+				<div class="col-12">
+					<h1>Ajouter un produit</h1>
+					{% include "product/_form.html.twig" %}
+				</div>
+			</section>
+		</main>
+	{% endif %}
+
+{% endblock %}
